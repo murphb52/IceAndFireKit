@@ -15,4 +15,17 @@ class Tests: XCTestCase
         super.tearDown()
     }
     
+    func testExample()
+    {
+        let testExpectation = expectationWithDescription("testExample")
+        
+        IceAndFireRequestEngine.sharedInstance.getCharacter()
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            
+            
+        }
+    }
+    
 }

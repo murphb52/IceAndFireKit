@@ -10,5 +10,5 @@ import Foundation
 
 public protocol IceAndFireObject
 {
-    
+    init?(ditionary: NSDictionary)
 }
