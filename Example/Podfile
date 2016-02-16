@@ -1,0 +1,9 @@
+source 'https://github.com/CocoaPods/Specs.git'
+use_frameworks!
+
+
+target 'IceAndFireKit_Tests', :exclusive => true do
+  pod 'IceAndFireKit', :path => '../'
+
+  
+end
