@@ -1,0 +1,14 @@
+PODS:
+  - IceAndFireKit (0.1.0)
+
+DEPENDENCIES:
+  - IceAndFireKit (from `../`)
+
+EXTERNAL SOURCES:
+  IceAndFireKit:
+    :path: ../
+
+SPEC CHECKSUMS:
+  IceAndFireKit: 538be917b6b5446ddcbf778c58205f33ca0bc564
+
+COCOAPODS: 0.39.0

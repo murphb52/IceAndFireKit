@@ -1,0 +1,6 @@
+framework module IceAndFireKit {
+  umbrella header "IceAndFireKit-umbrella.h"
+
+  export *
+  module * { export * }
+}
