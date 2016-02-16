@@ -4,6 +4,6 @@ use_frameworks!
 
 target 'IceAndFireKit_Tests', :exclusive => true do
   pod 'IceAndFireKit', :path => '../'
-
+  pod 'Alamofire', '~> 3.0'
   
 end

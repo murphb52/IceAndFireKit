@@ -3,13 +3,13 @@
   "version": "0.1.0",
   "summary": "A short description of IceAndFireKit.",
   "description": "",
-  "homepage": "https://github.com/<GITHUB_USERNAME>/IceAndFireKit",
+  "homepage": "https://github.com/murphb52/IceAndFireKit",
   "license": "MIT",
   "authors": {
     "Brian": "brianmartinmurphy@gmail.com"
   },
   "source": {
-    "git": "https://github.com/<GITHUB_USERNAME>/IceAndFireKit.git",
+    "git": "https://github.com/murphb52/IceAndFireKit.git",
     "tag": "0.1.0"
   },
   "platforms": {

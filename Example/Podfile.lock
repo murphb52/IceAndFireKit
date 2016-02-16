@@ -1,7 +1,9 @@
 PODS:
+  - Alamofire (3.2.0)
   - IceAndFireKit (0.1.0)
 
 DEPENDENCIES:
+  - Alamofire (~> 3.0)
   - IceAndFireKit (from `../`)
 
 EXTERNAL SOURCES:
@@ -9,6 +11,7 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  IceAndFireKit: 538be917b6b5446ddcbf778c58205f33ca0bc564
+  Alamofire: 4da478599fccddff361205c8929333d7fe18dceb
+  IceAndFireKit: 96032d5322c2e710c46eca5a0b3c26a4107d4d72
 
 COCOAPODS: 0.39.0
