@@ -10,7 +10,7 @@ import Foundation
 
 public class IceAndFireRequestEngine
 {
-    public static let sharedInstance = IceAndFireRequestEngine()
+//    public static let sharedInstance = IceAndFireRequestEngine()
     
     public func getHouse(completionHander: (houseArray: Array<IceAndFireHouse>?) -> Void)
     {
