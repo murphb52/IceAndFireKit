@@ -7,7 +7,6 @@
 //
 
 import Foundation
-//import Alamofire
 
 public class IceAndFireRequestEngine
 {
@@ -22,7 +21,7 @@ public class IceAndFireRequestEngine
     {
         completionHandler(characterArray: nil)
 //        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/characters") .responseJSON { (response) -> Void in
-//            
+//        
 //            
 //            var characterArray : Array<IceAndFireCharacter>? = Array<IceAndFireCharacter>()
 //            

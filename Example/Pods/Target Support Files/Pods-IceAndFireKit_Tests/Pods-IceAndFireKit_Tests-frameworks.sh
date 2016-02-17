@@ -84,10 +84,8 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "Pods-IceAndFireKit_Tests/Alamofire.framework"
   install_framework "Pods-IceAndFireKit_Tests/IceAndFireKit.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "Pods-IceAndFireKit_Tests/Alamofire.framework"
   install_framework "Pods-IceAndFireKit_Tests/IceAndFireKit.framework"
 fi
