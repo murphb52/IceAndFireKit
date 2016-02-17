@@ -9,7 +9,7 @@
 Pod::Spec.new do |s|
   s.name             = "IceAndFireKit"
   s.version          = "0.1.0"
-  s.summary          = "A short description of IceAndFireKit."
+  s.summary          = "Simple library for easy access to AnApiOfIceAndFire."
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -17,6 +17,8 @@ Pod::Spec.new do |s|
 #   * Write the description between the DESC delimiters below.
 #   * Finally, don't worry about the indent, CocoaPods strips it!  
   s.description      = <<-DESC
+A Simple Swift implementation of interaction with the Api AnApiOfIceAndFire.
+RequestEngine and Models to get information from the API (https://anapioficeandfire.com) in an easily accesible way
                        DESC
 
   s.homepage         = "https://github.com/murphb52/IceAndFireKit"

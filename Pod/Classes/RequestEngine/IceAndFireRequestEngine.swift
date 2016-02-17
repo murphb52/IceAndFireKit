@@ -7,7 +7,7 @@
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 
 public class IceAndFireRequestEngine
 {
@@ -18,14 +18,11 @@ public class IceAndFireRequestEngine
         
     }
     
-//    public func getCharacter(completionHandler: (characterArray: Array<IceAndFireCharacter>?) -> Void)
-//    {
-//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/characters") .responseJSON { (response : Response<AnyObject, NSError>) -> Void in
+    public func getCharacter(completionHandler: (characterArray: Array<IceAndFireCharacter>?) -> Void)
+    {
+        completionHandler(characterArray: nil)
+//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/characters") .responseJSON { (response) -> Void in
 //            
-//            print(response.request)  // original URL request
-//            print(response.response) // URL response
-//            print(response.data)     // server data
-//            print(response.result)   // result of response serialization
 //            
 //            var characterArray : Array<IceAndFireCharacter>? = Array<IceAndFireCharacter>()
 //            
@@ -55,20 +52,15 @@ public class IceAndFireRequestEngine
 //
 //            completionHandler(characterArray: characterArray)
 //        }
-//    }
-//    
-//    public func getBook(completionHandler: (success: Bool) -> Void)
-//    {
-//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/books") .responseJSON { (response : Response<AnyObject, NSError>) -> Void in
+    }
+    
+    public func getBook(completionHandler: (success: Bool) -> Void)
+    {
+//        Alamofire.request(.GET, "").responseJSON { (responseObject) -> Void in
 //            
-//            print(response.request)  // original URL request
-//            print(response.response) // URL response
-//            print(response.data)     // server data
-//            print(response.result)   // result of response serialization
-//            
-//            if let JSON = response.result.value {
-//                print("JSON: \(JSON)")
-//            }
+//        }
+//        
+//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/books") .responseJSON { (response) -> Void in
 //            
 //            guard response.response?.statusCode == 200 else
 //            {
@@ -79,6 +71,6 @@ public class IceAndFireRequestEngine
 //            completionHandler(success: true)
 //            
 //        }
-//
-//    }
+
+    }
 }

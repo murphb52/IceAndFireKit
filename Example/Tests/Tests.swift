@@ -19,11 +19,17 @@ class Tests: XCTestCase
     {
         let testExpectation = expectationWithDescription("testExample")
         
-        IceAndFireRequestEngine.sharedInstance.getCharacter()
+        var localCharacterArray : Array<IceAndFireCharacter>?
+        IceAndFireRequestEngine.sharedInstance.getCharacter { (characterArray) -> Void in
+            
+            localCharacterArray = characterArray
+            testExpectation.fulfill()
+            
+        }
         
         waitForExpectationsWithTimeout(10) { (error) -> Void in
             
-            
+//            XCTAssertNotNil(localCharacterArray)
             
         }
     }
