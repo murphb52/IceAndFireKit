@@ -86,7 +86,7 @@ public class IceAndFireRequestEngine
                 let jsonDictionaryResponse =  jsonResponse as! [String : AnyObject]
                 
                 //** Parse Dictionary into object
-                let iceAndFireObject = T(ditionary: jsonDictionaryResponse)
+                let iceAndFireObject = T(dictionary: jsonDictionaryResponse)
                 
                 //** Fire off completion handler
                 completionHandler(iceAndFireObject, nil)

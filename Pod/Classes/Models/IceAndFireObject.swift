@@ -12,9 +12,15 @@ public protocol IceAndFireObject
 {
     static var APIType : String { get }
     
-    //** Create an object from a dictionary
-    init?(ditionary: NSDictionary)
+    /// Create an object from a dictionary
+    init?(dictionary: NSDictionary?)
     
-    //** Can create the object with a url of where to populate it
-    init?(urlString: String)
+    /// Can create the object with a url of where to populate it
+    init?(urlString: String?)
+    
+    /// The hypermedia URL of this resource
+    var urlString : String? { get set }
+    
+    /// The name of object from the API.
+    var name : String? { get set }
 }
