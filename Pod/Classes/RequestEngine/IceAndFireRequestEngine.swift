@@ -22,7 +22,7 @@ public class IceAndFireRequestEngine
     
     //** Paginate objects etc
     
-    public func getIceandFireObject<T:IceAndFireObject>(type : T.Type, id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
+    public func getIceAndFireObject<T:IceAndFireObject>(type : T.Type, id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
     {
         //** Create our urlString
         let endpointString = "\(apiURLString)\(type.APIType)/\(id)"
@@ -34,6 +34,21 @@ public class IceAndFireRequestEngine
         performRequestWithURL(url!, type: type) { (iceAndFireObject, errorString) -> Void in
             
             completionHandler(iceAndFireObject: iceAndFireObject, errorMessage: errorString)
+            
+        }
+    }
+    
+    public func getIceAndFireObject<T:IceAndFireObject>(object : T, type: T.Type, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
+    {
+        //** Create our urlString
+        let endpointString = object.urlString
+        
+        //** Create thr URL
+        let url = NSURL(string: endpointString!)
+        
+        performRequestWithURL(url, type: type) { (parsedIceAndFireObject, errorString) -> Void in
+            
+            completionHandler(iceAndFireObject: parsedIceAndFireObject, errorMessage: errorString)
             
         }
     }
@@ -86,10 +101,10 @@ public class IceAndFireRequestEngine
                 let jsonDictionaryResponse =  jsonResponse as! [String : AnyObject]
                 
                 //** Parse Dictionary into object
-                let iceAndFireObject = T(dictionary: jsonDictionaryResponse)
+                let parsedIceAndFireObject = T(dictionary: jsonDictionaryResponse)
                 
                 //** Fire off completion handler
-                completionHandler(iceAndFireObject, nil)
+                completionHandler(parsedIceAndFireObject, nil)
             }
             catch
             {

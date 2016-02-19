@@ -21,7 +21,7 @@ class Tests: XCTestCase
         
         var bookObject : IceAndFireBook?
         
-        IceAndFireRequestEngine.sharedInstance.getIceandFireObject(IceAndFireBook.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
+        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(IceAndFireBook.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
             
             bookObject = iceAndFireObject
             

@@ -35,65 +35,65 @@ public class IceAndFireHouse : IceAndFireObject
     public var name : String?
     
     /// The region that this house resides in.
-    var region : String?
+    public var region : String?
     
     /// Text describing the coat of arms of this house.
-    var coatOfArms : String?
+    public var coatOfArms : String?
     
     /// The words of this house.
-    var words : String?
+    public var words : String?
     
     /// The titles that this house holds.
-    var titles : [String]?
+    public var titles : [String]?
     
     /// The seats that this house holds.
-    var seats : [String]?
+    public var seats : [String]?
     
     /// The Character resource URL of this house's current lord.
-    var currentLordURLString : String?
+    public var currentLordURLString : String?
     
     /// The Character resource URL of this house's heir.
-    var heirURLString : String?
+    public var heirURLString : String?
     
     /// The House resource URL that this house answers to.
-    var overlordURLString : String?
+    public var overlordURLString : String?
     
     /// The year that this house was founded.
-    var founded : String?
+    public var founded : String?
     
     /// The Character resource URL that founded this house.
-    var founderURLString : String?
+    public var founderURLString : String?
     
     /// The year that this house died out.
-    var diedOut : String?
+    public var diedOut : String?
     
     /// An array of names of the noteworthy weapons that this house owns.
-    var ancestralWeapons : [String]?
+    public var ancestralWeapons : [String]?
     
     /// An array of House resource URLs that was founded from this house.
-    var cadetBranchesURLStringsArray : [String]?
+    public var cadetBranchesURLStringsArray : [String]?
     
     /// An array of Character resource URLs that are sworn to this house.
-    var swornMembersURLStrings : [String]?
+    public var swornMembersURLStrings : [String]?
 
     //MARK: IceAndFireKit Variables. Infered from urls from the API. All objects need to be loaded from the API Seperatly
 
     /// Created from the `currentLordURLString`. Needs to be loaded from the API for details
-    var currentLordObject : IceAndFireCharacter?
+    public var currentLordObject : IceAndFireCharacter?
     
     /// Created from the `heirURLString. Needs to be loaded from the API for details
-    var heirObject : IceAndFireCharacter?
+    public var heirObject : IceAndFireCharacter?
     
     /// Created from the `overlordURLString`. Needs to be loaded from the API for details
-    var overlord : IceAndFireCharacter?
+    public var overlord : IceAndFireCharacter?
     
     /// Created from the `founderURLString`. Needs to be loaded from the API for details
-    var founderObject : IceAndFireCharacter?
+    public var founderObject : IceAndFireCharacter?
     
     /// Created from the `cadetBranchesURLStringsArray`. Needs to be loaded from the API for details
-    var cadetBranchesObjectsArray : [IceAndFireHouse]?
+    public var cadetBranchesObjectsArray : [IceAndFireHouse]?
     
     /// Created from the `swornMembersURLStrings`. Needs to be loaded from the API for details
-    var swornMembersObjectsArray : [IceAndFireCharacter]?
+    public var swornMembersObjectsArray : [IceAndFireCharacter]?
     
 }

@@ -37,63 +37,63 @@ public class IceAndFireCharacter : IceAndFireObject
     public var name : String?
     
     /// The culture that this character belongs to.
-    var culture : String?
+    public var culture : String?
     
     /// The year that this person was born
-    var born : String?
+    public var born : String?
     
     /// The year that this person died.
-    var died : String?
+    public var died : String?
     
     /// The titles that this character holds.
-    var titles : [String]?
+    public var titles : [String]?
     
     /// The aliases that this character goes by.
-    var aliases : [String]?
+    public var aliases : [String]?
     
     /// The character resource URL of this character's father.
-    var fatherURLString : String?
+    public var fatherURLString : String?
     
     /// The character resource URL of this character's mother.
-    var motherURLString : String?
+    public var motherURLString : String?
     
     /// The character resource URL of this character's spouse.
-    var spouseURLString : String?
+    public var spouseURLString : String?
     
     /// An array of House resource URLs that this character is loyal to.
-    var allegiancesURLStringsArray : [String]?
+    public var allegiancesURLStringsArray : [String]?
     
     /// An array of Book resource URLs that this character has been in.
-    var booksURLStrings : [String]?
+    public var booksURLStrings : [String]?
     
     /// An array of Book resource URLs that this character has had a POV-chapter in.
-    var povBooksURLStrings : [String]?
+    public var povBooksURLStrings : [String]?
     
     /// An array of names of the seasons of Game of Thrones that this character has been in.
-    var tvSeries : [String]?
+    public var tvSeries : [String]?
     
     /// An array of actor names that has played this character in the TV show Game Of Thrones.
-    var playedBy : [String]?
+    public var playedBy : [String]?
     
     //MARK: IceAndFireKit Variables. Infered from urls from the API. All objects need to be loaded from the API Seperatly
 
     /// Father object of the Character, infered from `fatherURLString`. Needs to be loaded from API
-    var fatherObject : IceAndFireCharacter?
+    public var fatherObject : IceAndFireCharacter?
     
     /// Mother object of the Character, infered from `motherURLString`. Needs to be loaded from API
-    var motherObject : IceAndFireCharacter?
+    public var motherObject : IceAndFireCharacter?
     
     /// Spouse object of the Character, infered from `motherURLString`. Needs to be loaded from API
-    var spouseObject : IceAndFireCharacter?
+    public var spouseObject : IceAndFireCharacter?
     
     /// An array of houses, infered from `allegiancesURLStringsArray`. Each object needs to be loaded from API
-    var allegiancesObjectArray : [IceAndFireHouse]?
+    public var allegiancesObjectArray : [IceAndFireHouse]?
 
     /// An array of books, infered from `booksURLStrings`. Each object needs to be loaded from API
-    var booksObjectArray : [IceAndFireBook]?
+    public var booksObjectArray : [IceAndFireBook]?
     
     /// An array of books, infered from `povBooksURLStrings`. Each object needs to be loaded from API
-    var povBooksObjectArray : [IceAndFireBook]?
+    public var povBooksObjectArray : [IceAndFireBook]?
     
     
 }
