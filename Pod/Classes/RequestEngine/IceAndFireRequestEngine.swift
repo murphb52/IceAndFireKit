@@ -10,66 +10,95 @@ import Foundation
 
 public class IceAndFireRequestEngine
 {
-//    public static let sharedInstance = IceAndFireRequestEngine()
+    public static let sharedInstance = IceAndFireRequestEngine()
     
-    public func getHouse(completionHander: (houseArray: Array<IceAndFireHouse>?) -> Void)
+    let apiURLString = "http://www.anapioficeandfire.com/api/"
+    
+    //** Fetch Object with id
+    
+    //** Fetch list of objects with id
+    
+    //** Populate object
+    
+    //** Paginate objects etc
+    
+    public func getIceandFireObject<T:IceAndFireObject>(type : T.Type, id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
     {
+        //** Create our urlString
+        let endpointString = "\(apiURLString)\(type.APIType)/\(id)"
         
+        //** Create thr URL
+        let url = NSURL(string: endpointString)
+        
+        
+        performRequestWithURL(url!, type: type) { (iceAndFireObject, errorString) -> Void in
+            
+            completionHandler(iceAndFireObject: iceAndFireObject, errorMessage: errorString)
+            
+        }
     }
     
-    public func getCharacter(completionHandler: (characterArray: Array<IceAndFireCharacter>?) -> Void)
+    private func performRequestWithURL<T:IceAndFireObject>(url : NSURL!, type : T.Type, completionHandler: (T?, String?) -> Void)
     {
-        completionHandler(characterArray: nil)
-//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/characters") .responseJSON { (response) -> Void in
-//        
-//            
-//            var characterArray : Array<IceAndFireCharacter>? = Array<IceAndFireCharacter>()
-//            
-//            guard response.result.value is NSMutableArray else
-//            {
-//                completionHandler(characterArray: nil)
-//                return
-//            }
-//            
-//            guard response.response?.statusCode == 200 else
-//            {
-//                completionHandler(characterArray: nil)
-//                return
-//            }
-//            
-//            if let jsonArray = response.result.value as! [NSDictionary]?
-//            {
-//                print("JSON: \(jsonArray)")
-//                
-//                for dictionary : NSDictionary in jsonArray
-//                {
-//                    let iceAndFireObject = IceAndFireCharacter(ditionary: dictionary)!
-//                    characterArray?.append(iceAndFireObject)
-//                }
-//
-//            }
-//
-//            completionHandler(characterArray: characterArray)
-//        }
-    }
-    
-    public func getBook(completionHandler: (success: Bool) -> Void)
-    {
-//        Alamofire.request(.GET, "").responseJSON { (responseObject) -> Void in
-//            
-//        }
-//        
-//        Alamofire.request(.GET , "http://www.anapioficeandfire.com/api/books") .responseJSON { (response) -> Void in
-//            
-//            guard response.response?.statusCode == 200 else
-//            {
-//                completionHandler(success: false)
-//                return
-//            }
-//            
-//            completionHandler(success: true)
-//            
-//        }
+        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, urlResponse : NSURLResponse?, error : NSError?) -> Void in
+            
+            //** Gaurd against error
+            guard error == nil else
+            {
+                completionHandler(nil, error?.description)
+                return
+            }
+            
+            //** Make sure we have a HTTPURLResponse
+            guard urlResponse is NSHTTPURLResponse else
+            {
+                completionHandler(nil, "Serialization error")
+                return
+            }
+            
+            let httpURLResponse : NSHTTPURLResponse  = urlResponse as! NSHTTPURLResponse
+            
+            //** Make sure we got a 200
+            guard httpURLResponse.statusCode == 200 else
+            {
+                completionHandler(nil, NSHTTPURLResponse.localizedStringForStatusCode(httpURLResponse.statusCode))
+                return
+            }
+            
+            guard data != nil else
+            {
+                completionHandler(nil, "Nil response from API")
+                return
+            }
+            
+            //** Try parse into JSONObject
+            do
+            {
+                let jsonResponse = try NSJSONSerialization.JSONObjectWithData(data!, options: .MutableContainers)
+                
+                //** Make sure it can be parsed into dictionary
+                guard jsonResponse is [String : AnyObject] else
+                {
+                    completionHandler(nil, "Serialization error")
+                    return
+                }
+                
+                let jsonDictionaryResponse =  jsonResponse as! [String : AnyObject]
+                
+                //** Parse Dictionary into object
+                let iceAndFireObject = T(ditionary: jsonDictionaryResponse)
+                
+                //** Fire off completion handler
+                completionHandler(iceAndFireObject, nil)
+            }
+            catch
+            {
+                completionHandler(nil, "JSON Parsing error")
+            }
+            
+
+            
+        }.resume()
 
     }
 }

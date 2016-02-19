@@ -10,7 +10,14 @@ import Foundation
 
 public class IceAndFireCharacter : IceAndFireObject
 {
+    public static let APIType = "characters"
+    
     public required init?(ditionary: NSDictionary)
+    {
+        
+    }
+    
+    public required init?(urlString: String)
     {
         
     }

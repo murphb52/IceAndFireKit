@@ -17,21 +17,23 @@ class Tests: XCTestCase
     
     func testExample()
     {
-//        let testExpectation = expectationWithDescription("testExample")
-//        
-//        var localCharacterArray : Array<IceAndFireCharacter>?
-//        IceAndFireRequestEngine.sharedInstance.getCharacter { (characterArray) -> Void in
-//            
-//            localCharacterArray = characterArray
-//            testExpectation.fulfill()
-//            
-//        }
+        let testExpectation = expectationWithDescription("TextExample")
         
-//        waitForExpectationsWithTimeout(10) { (error) -> Void in
-//            
-//            XCTAssertNotNil(localCharacterArray)
-//
-//        }
+        var bookObject : IceAndFireBook?
+        
+        IceAndFireRequestEngine.sharedInstance.getIceandFireObject(IceAndFireBook.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
+            
+            bookObject = iceAndFireObject
+            
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            XCTAssertNotNil(bookObject)
+            
+        }
+
     }
     
 }
