@@ -18,6 +18,29 @@ public class IceAndFireHouse : IceAndFireObject
         {
             return nil
         }
+        
+        self.urlString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "url")
+        self.name = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "name")
+        self.region = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "region")
+        self.coatOfArms = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "coatOfArms")
+        self.words = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "words")
+        self.titles = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "titles")
+        self.seats = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "seats")
+        self.currentLordURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "currentLord")
+        self.currentLordObject = IceAndFireCharacter(urlString: self.currentLordURLString)
+        self.heirURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "heir")
+        self.heirObject = IceAndFireCharacter(urlString: self.heirURLString)
+        self.overlordURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "overlord")
+        self.overlord = IceAndFireCharacter(urlString: self.overlordURLString)
+        self.founded = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "founded")
+        self.founderURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "founder")
+        self.founderObject = IceAndFireCharacter(urlString: self.founderURLString)
+        self.diedOut = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "diedOut")
+        self.ancestralWeapons = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "ancestralWeapons")
+        self.cadetBranchesURLStringsArray = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "cadetBranches")
+        self.cadetBranchesObjectsArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.cadetBranchesURLStringsArray)
+        self.swornMembersURLStrings = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "swornMembers")
+        self.swornMembersObjectsArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.swornMembersURLStrings)
     }
     
     public required init?(urlString: String?)

@@ -16,6 +16,12 @@ class IceAndFireObjectParser
         if dictionary.objectForKey(key) != nil && dictionary.objectForKey(key) is String
         {
             let stringValue = dictionary.objectForKey(key) as? String
+            
+            guard stringValue?.characters.count > 0 else
+            {
+                return nil
+            }
+            
             return stringValue
         }
         
