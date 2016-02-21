@@ -18,6 +18,31 @@ public class IceAndFireCharacter : IceAndFireObject
         {
             return nil
         }
+        
+        self.urlString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "url")
+        self.name = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "name")
+        self.culture = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "culture")
+        self.born = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "born")
+        self.died = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "died")
+        self.fatherURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "father")
+        self.motherURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "mother")
+        self.spouseURLString = IceAndFireObjectParser.stringFromDictionary(dictionary!, key: "spouse")
+        self.allegiancesURLStringsArray = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "allegiances")
+        self.booksURLStrings = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "books")
+        self.povBooksURLStrings = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "povBooks")
+        self.tvSeries = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "tvSeries")
+        self.playedBy = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "playedBy")
+        
+        //** Create objects from URLS
+        self.fatherObject = IceAndFireCharacter(urlString: self.fatherURLString)
+        self.motherObject = IceAndFireCharacter(urlString: self.motherURLString)
+        self.spouseObject = IceAndFireCharacter(urlString: self.spouseURLString)
+        
+        
+        self.allegiancesObjectArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.allegiancesURLStringsArray)
+        self.booksObjectArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.booksURLStrings)
+        self.povBooksObjectArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.povBooksURLStrings)
+
     }
     
     public required init?(urlString: String?)

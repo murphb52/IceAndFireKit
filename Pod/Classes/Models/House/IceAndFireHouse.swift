@@ -26,6 +26,8 @@ public class IceAndFireHouse : IceAndFireObject
         {
             return nil
         }
+        
+        self.urlString = urlString
     }
     
     /// The hypermedia URL of this resource

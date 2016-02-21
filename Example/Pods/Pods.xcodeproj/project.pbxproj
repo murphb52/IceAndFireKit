@@ -17,6 +17,7 @@
 		8DA22B3825554D415F58085FF54357B0 /* Pods-IceAndFireKit_Tests-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3449C284844BAEC9E1CFE6C0985954EE /* Pods-IceAndFireKit_Tests-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9F7DA17AA1544ABFAD57C1898F8DA9D4 /* IceAndFireHouse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A2ABCDA6AD8F5FE484796FB0D36EFCB /* IceAndFireHouse.swift */; };
 		B3A42070749BAB70AB2581F828D4F5B3 /* Pods-IceAndFireKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0715DF664D006ADABFEF5ABF9EA2FBFD /* Pods-IceAndFireKit_Tests-dummy.m */; };
+		C9E16F4F1C7A14E5007380F2 /* IceAndFireObjectParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E16F4E1C7A14E5007380F2 /* IceAndFireObjectParser.swift */; };
 		D223E65687233F8A7DF607E9BBF1C6EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		F2AD742DE733DEF3AB3206D771F489D6 /* IceAndFireRequestEngine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6187CB74BAF12061EBDAB00F2DF5C38F /* IceAndFireRequestEngine.swift */; };
 /* End PBXBuildFile section */
@@ -60,6 +61,7 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C73272B7B34954C51BB4F7436BF434C1 /* IceAndFireKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IceAndFireKit-prefix.pch"; sourceTree = "<group>"; };
 		C8B5D6ECB621E7476C2F18387B2AF2D3 /* IceAndFireKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IceAndFireKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9E16F4E1C7A14E5007380F2 /* IceAndFireObjectParser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceAndFireObjectParser.swift; sourceTree = "<group>"; };
 		D9351DC5DAC3971330F033B83D78FE6A /* IceAndFireKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IceAndFireKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E1BA7BA467A4551049429453ABCDCD27 /* Pods-IceAndFireKit_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-IceAndFireKit_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		E528DBE6C22B78DE1B81C6A5E01BB4AB /* Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -124,6 +126,7 @@
 			isa = PBXGroup;
 			children = (
 				1E00BD2014C57F04D088A3C7C92F740C /* IceAndFireObject.swift */,
+				C9E16F4E1C7A14E5007380F2 /* IceAndFireObjectParser.swift */,
 				0DB3D74F185F7BF1719ADF7AFE24880F /* Book */,
 				BF300F877683E952E60CA0A0A1EC90D4 /* Character */,
 				D9CFAA90CD0A1FE33CB73AD102EF54C3 /* House */,
@@ -389,6 +392,7 @@
 				3C8B06F1E490A9A78F4CC659D53D9359 /* IceAndFireKit-dummy.m in Sources */,
 				6774161EC19A0B7F72C651803F1CE645 /* IceAndFireObject.swift in Sources */,
 				F2AD742DE733DEF3AB3206D771F489D6 /* IceAndFireRequestEngine.swift in Sources */,
+				C9E16F4F1C7A14E5007380F2 /* IceAndFireObjectParser.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
