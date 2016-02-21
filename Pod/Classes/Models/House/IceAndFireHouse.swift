@@ -14,7 +14,7 @@ public class IceAndFireHouse : IceAndFireObject
     
     public required init?(dictionary: NSDictionary?)
     {
-        guard dictionary == nil else
+        guard dictionary != nil else
         {
             return nil
         }
@@ -22,7 +22,7 @@ public class IceAndFireHouse : IceAndFireObject
     
     public required init?(urlString: String?)
     {
-        guard urlString == nil else
+        guard urlString != nil else
         {
             return nil
         }

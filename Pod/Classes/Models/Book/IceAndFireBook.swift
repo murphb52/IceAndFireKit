@@ -14,18 +14,92 @@ public class IceAndFireBook : IceAndFireObject
     
     public required init?(dictionary: NSDictionary?)
     {
-        guard dictionary == nil else
+        guard dictionary != nil else
         {
             return nil
         }
+        
+        if dictionary?.objectForKey("url") != nil && dictionary?.objectForKey("url") is String
+        {
+            self.urlString = dictionary?.objectForKey("url") as? String
+        }
+        
+        if dictionary?.objectForKey("name") != nil && dictionary?.objectForKey("name") is String
+        {
+            self.name = dictionary?.objectForKey("name") as? String
+        }
+        
+        if dictionary?.objectForKey("isbn") != nil && dictionary?.objectForKey("isbn") is String
+        {
+            self.isbn = dictionary?.objectForKey("isbn") as? String
+        }
+        
+        if dictionary?.objectForKey("authors") != nil && dictionary?.objectForKey("authors") is [String]
+        {
+            self.authors = dictionary?.objectForKey("authors") as? [String]
+        }
+        
+        if dictionary?.objectForKey("numberOfPages") != nil && dictionary?.objectForKey("numberOfPages") is Int
+        {
+            self.numberOfPages = dictionary?.objectForKey("numberOfPages") as? Int
+        }
+        
+        if dictionary?.objectForKey("country") != nil && dictionary?.objectForKey("country") is String
+        {
+            self.country = dictionary?.objectForKey("country") as? String
+        }
+        
+        if dictionary?.objectForKey("mediaType") != nil && dictionary?.objectForKey("mediaType") is String
+        {
+            self.mediaType = dictionary?.objectForKey("mediaType") as? String
+        }
+        
+        if dictionary?.objectForKey("released") != nil && dictionary?.objectForKey("released") is String
+        {
+            let releaseString = dictionary?.objectForKey("released") as? String
+            
+            let dateFormatter = NSDateFormatter()
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            dateFormatter.timeZone = NSTimeZone.localTimeZone()
+            dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+            
+            self.released =  dateFormatter.dateFromString(releaseString!)
+        }
+        
+        if dictionary?.objectForKey("characters") != nil && dictionary?.objectForKey("characters") is [String]
+        {
+            self.characterURLStrings = dictionary?.objectForKey("characters") as? [String]
+            
+            self.characterObjects = []
+            for characterURLString in self.characterURLStrings!
+            {
+                let iceAndFireChar = IceAndFireCharacter(urlString: characterURLString)
+                self.characterObjects?.append(iceAndFireChar!)
+            }
+        }
+        
+        if dictionary?.objectForKey("povCharacters") != nil && dictionary?.objectForKey("povCharacters") is [String]
+        {
+            self.povCharacterURLStrings = dictionary?.objectForKey("povCharacters") as? [String]
+            
+            self.povCharacterObjects = []
+            for povCharacterURLString in self.povCharacterURLStrings!
+            {
+                let iceAndFireChar = IceAndFireCharacter(urlString: povCharacterURLString)
+                self.povCharacterObjects?.append(iceAndFireChar!)
+            }
+        }
+        
     }
     
     public required init?(urlString: String?)
     {
-        guard urlString == nil else
+        guard urlString != nil else
         {
             return nil
         }
+        
+        self.urlString = urlString
     }
     
     //MARK: Properties from API

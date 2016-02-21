@@ -97,11 +97,9 @@ public class IceAndFireRequestEngine
                     completionHandler(nil, "Serialization error")
                     return
                 }
-                
-                let jsonDictionaryResponse =  jsonResponse as! [String : AnyObject]
-                
+                                
                 //** Parse Dictionary into object
-                let parsedIceAndFireObject = T(dictionary: jsonDictionaryResponse)
+                let parsedIceAndFireObject = T(dictionary: jsonResponse as? NSDictionary)
                 
                 //** Fire off completion handler
                 completionHandler(parsedIceAndFireObject, nil)
