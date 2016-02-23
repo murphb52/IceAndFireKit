@@ -24,9 +24,8 @@ RequestEngine and Models to get information from the API (https://anapioficeandf
   s.homepage         = "https://github.com/murphb52/IceAndFireKit"
   # s.screenshots     = "", ""
   s.license          = 'MIT'
-  s.author           = { "Brian" => "brianmartinmurphy@gmail.com" }
+  s.author           = { "Brian Murphy" => "brianmartinmurphy@gmail.com" }
   s.source           = { :git => "https://github.com/murphb52/IceAndFireKit.git", :tag => s.version.to_s }
-  # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.platform     = :ios, '8.0'
   s.requires_arc = true
@@ -37,6 +36,5 @@ RequestEngine and Models to get information from the API (https://anapioficeandf
   }
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.frameworks = 'UIKit', 'MapKit'
   # s.dependency 'AFNetworking', '~> 2.3'
 end

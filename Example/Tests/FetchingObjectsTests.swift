@@ -17,7 +17,7 @@ class FetchingObjectsTests: XCTestCase {
         
         var bookObject : IceAndFireBook?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireBook?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(1) { (iceAndFireObject : IceAndFireBook?, error : NSError?) -> Void in
             
             bookObject = iceAndFireObject
             
@@ -38,7 +38,7 @@ class FetchingObjectsTests: XCTestCase {
         
         var charObject : IceAndFireCharacter?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireCharacter?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(1) { (iceAndFireObject : IceAndFireCharacter?, error : NSError?) -> Void in
             
             charObject = iceAndFireObject
             
@@ -58,7 +58,7 @@ class FetchingObjectsTests: XCTestCase {
         
         var houseObject : IceAndFireHouse?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireHouse?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(1) { (iceAndFireObject : IceAndFireHouse?, error : NSError?) -> Void in
             
             houseObject = iceAndFireObject
             
@@ -80,7 +80,7 @@ class FetchingObjectsTests: XCTestCase {
         var book = IceAndFireBook(urlString: "http://anapioficeandfire.com/api/books/2")
         XCTAssertFalse(book!.isDetailed)
         
-        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(book) { (iceAndFireObject : IceAndFireBook?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(book) { (iceAndFireObject : IceAndFireBook?, error : NSError?) -> Void in
             
             book = iceAndFireObject
             
@@ -102,7 +102,7 @@ class FetchingObjectsTests: XCTestCase {
         var character = IceAndFireCharacter(urlString: "http://anapioficeandfire.com/api/characters/2")
         XCTAssertFalse(character!.isDetailed)
         
-        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(character) { (iceAndFireObject : IceAndFireCharacter?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(character) { (iceAndFireObject : IceAndFireCharacter?, error : NSError?) -> Void in
             
             character = iceAndFireObject
             
@@ -124,7 +124,7 @@ class FetchingObjectsTests: XCTestCase {
         var house = IceAndFireHouse(urlString: "http://anapioficeandfire.com/api/houses/2")
         XCTAssertFalse(house!.isDetailed)
         
-        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(house) { (iceAndFireObject : IceAndFireHouse?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObject(house) { (iceAndFireObject : IceAndFireHouse?, error : NSError?) -> Void in
             
             house = iceAndFireObject
             

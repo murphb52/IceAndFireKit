@@ -18,17 +18,28 @@ public class IceAndFireRequestEngine
     
     let ETAG = "iOS_IceAndFireRequestEngine"
     
-    //** Fetch Object with id
-    
-    //** Fetch list of objects with id
-    
-    //** Populate object
-    
-    //** Paginate objects etc
-    
-    public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int, limit : Int, completionHandler: (iceAndFireObjects : [T]?, error: NSError?) -> Void)
+    /// Fetches a page of objects with an optional page and limit
+    public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int?, limit : Int?, completionHandler: (iceAndFireObjects : [T]?, error: NSError?) -> Void)
     {
-        let endpointString = "\(APIURLString)\(T.APIType)?page=\(page)&limit=\(limit)"
+        var endpointString = "\(APIURLString)\(T.APIType)?page=\(page)&limit=\(limit)"
+        
+        if page != nil || limit != nil
+        {
+            endpointString += "?"
+            
+            if page != nil && limit != nil
+            {
+                endpointString += "page=\(page)&limit=\(limit)"
+            }
+            else if page != nil
+            {
+                endpointString += "page=\(page)"
+            }
+            else if page != nil
+            {
+                endpointString += "limit=\(limit)"
+            }
+        }
         
         let url = NSURL(string: endpointString)
         
@@ -46,7 +57,8 @@ public class IceAndFireRequestEngine
         }
     }
     
-    public func getIceAndFireObject<T:IceAndFireObject>(id: Int, completionHandler: (iceAndFireObject: T?, error: NSError?) -> Void)
+    /// Fetches and returns a detailed object from the API. Will parse based on the completionHander object
+    public func fetchIceAndFireObject<T:IceAndFireObject>(id: Int, completionHandler: (iceAndFireObject: T?, error: NSError?) -> Void)
     {
         //** Create our urlString
         let endpointString = "\(APIURLString)\(T.APIType)/\(id)"
@@ -65,7 +77,8 @@ public class IceAndFireRequestEngine
         }
     }
     
-    public func populateIceAndFireObject<T:IceAndFireObject>(object : T!, completionHandler: (iceAndFireObject: T?, error: NSError?) -> Void)
+    /// Populates a minimal object. The Object must have a urlString to be populated
+    public func fetchIceAndFireObject<T:IceAndFireObject>(object : T!, completionHandler: (iceAndFireObject: T?, error: NSError?) -> Void)
     {
         //** Create our urlString
         let endpointString = object.urlString
