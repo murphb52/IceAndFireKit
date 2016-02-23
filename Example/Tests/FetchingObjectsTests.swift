@@ -1,20 +1,16 @@
-import UIKit
+//
+//  FetchingObjectsTests.swift
+//  IceAndFireKit
+//
+//  Created by Brian Murphy on 23/02/2016.
+//  Copyright © 2016 CocoaPods. All rights reserved.
+//
+
 import XCTest
 import IceAndFireKit
 
-class Tests: XCTestCase
-{
-    
-    override func setUp()
-    {
-        super.setUp()
-    }
-    
-    override func tearDown()
-    {
-        super.tearDown()
-    }
-    
+class FetchingObjectsTests: XCTestCase {
+
     func testFetchingBook()
     {
         let testExpectation = expectationWithDescription("TextExample")
@@ -33,7 +29,7 @@ class Tests: XCTestCase
             XCTAssertNotNil(bookObject)
             
         }
-
+        
     }
     
     func testFetchingCharacter()
@@ -74,7 +70,7 @@ class Tests: XCTestCase
             XCTAssertNotNil(houseObject)
             
         }
-
+        
     }
     
     func testPopulatingBook()
@@ -124,7 +120,7 @@ class Tests: XCTestCase
     func testPopulatingHouse()
     {
         let testExpectation = expectationWithDescription("testPopulatingHouse")
-
+        
         var house = IceAndFireHouse(urlString: "http://anapioficeandfire.com/api/houses/2")
         XCTAssertFalse(house!.isDetailed)
         
@@ -143,4 +139,5 @@ class Tests: XCTestCase
         }
     }
     
+
 }
