@@ -22,38 +22,50 @@ public class IceAndFireRequestEngine
     
     //** Paginate objects etc
     
-    public func getIceAndFireObject<T:IceAndFireObject>(type : T.Type, id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
+    public func getIceAndFireObject<T:IceAndFireObject>(id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
     {
         //** Create our urlString
-        let endpointString = "\(apiURLString)\(type.APIType)/\(id)"
+        let endpointString = "\(apiURLString)\(T.APIType)/\(id)"
         
         //** Create thr URL
         let url = NSURL(string: endpointString)
         
         
-        performRequestWithURL(url!, type: type) { (iceAndFireObject, errorString) -> Void in
+        performRequestWithURL(url!, type: T.self) { (dictionary, errorString) -> Void in
             
-            completionHandler(iceAndFireObject: iceAndFireObject, errorMessage: errorString)
-            
-        }
-    }
-    
-    public func getIceAndFireObject<T:IceAndFireObject>(object : T, type: T.Type, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
-    {
-        //** Create our urlString
-        let endpointString = object.urlString
-        
-        //** Create thr URL
-        let url = NSURL(string: endpointString!)
-        
-        performRequestWithURL(url, type: type) { (parsedIceAndFireObject, errorString) -> Void in
+            //** Parse Dictionary into object
+            let parsedIceAndFireObject = T(dictionary: dictionary)
             
             completionHandler(iceAndFireObject: parsedIceAndFireObject, errorMessage: errorString)
             
         }
     }
     
-    private func performRequestWithURL<T:IceAndFireObject>(url : NSURL!, type : T.Type, completionHandler: (T?, String?) -> Void)
+    public func populateIceAndFireObject<T:IceAndFireObject>(object : T?, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
+    {
+        guard object != nil else
+        {
+            completionHandler(iceAndFireObject: nil, errorMessage: "An Object is required")
+            return
+        }
+        
+        //** Create our urlString
+        let endpointString = object!.urlString
+        
+        //** Create thr URL
+        let url = NSURL(string: endpointString!)
+        
+        performRequestWithURL(url, type: T.self) { (dictionary, errorString) -> Void in
+            
+            //** Parse Dictionary into object
+            let parsedIceAndFireObject = T(dictionary: dictionary)
+
+            completionHandler(iceAndFireObject: parsedIceAndFireObject, errorMessage: errorString)
+            
+        }
+    }
+    
+    private func performRequestWithURL<T:IceAndFireObject>(url : NSURL!, type : T.Type, completionHandler: (NSDictionary?, String?) -> Void)
     {
         NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, urlResponse : NSURLResponse?, error : NSError?) -> Void in
             
@@ -97,12 +109,9 @@ public class IceAndFireRequestEngine
                     completionHandler(nil, "Serialization error")
                     return
                 }
-                                
-                //** Parse Dictionary into object
-                let parsedIceAndFireObject = T(dictionary: jsonResponse as? NSDictionary)
                 
                 //** Fire off completion handler
-                completionHandler(parsedIceAndFireObject, nil)
+                completionHandler(jsonResponse as? NSDictionary, nil)
             }
             catch
             {

@@ -14,7 +14,7 @@
             buildForArchiving = "YES">
             <BuildableReference
                BuildableIdentifier = 'primary'
-               BlueprintIdentifier = '6E6CA89871C74BE9BC898DAA'
+               BlueprintIdentifier = '12A0A55059BFF09FA72A4409'
                BlueprintName = 'IceAndFireKit'
                ReferencedContainer = 'container:Pods.xcodeproj'
                BuildableName = 'IceAndFireKit.framework'>

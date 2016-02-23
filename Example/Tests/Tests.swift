@@ -21,7 +21,7 @@ class Tests: XCTestCase
         
         var bookObject : IceAndFireBook?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(IceAndFireBook.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
+        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireBook?, errorMessage : String?) -> Void in
             
             bookObject = iceAndFireObject
             
@@ -42,7 +42,7 @@ class Tests: XCTestCase
         
         var charObject : IceAndFireCharacter?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(IceAndFireCharacter.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
+        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireCharacter?, errorMessage : String?) -> Void in
             
             charObject = iceAndFireObject
             
@@ -62,7 +62,7 @@ class Tests: XCTestCase
         
         var houseObject : IceAndFireHouse?
         
-        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(IceAndFireHouse.self, id: 1) { (iceAndFireObject, errorMessage) -> Void in
+        IceAndFireRequestEngine.sharedInstance.getIceAndFireObject(1) { (iceAndFireObject : IceAndFireHouse?, errorMessage : String?) -> Void in
             
             houseObject = iceAndFireObject
             
@@ -75,6 +75,66 @@ class Tests: XCTestCase
             
         }
 
+    }
+    
+    func testPopulatingBook()
+    {
+        let testExpectation = expectationWithDescription("testPopulatingBook")
+        
+        var book = IceAndFireBook(urlString: "http://anapioficeandfire.com/api/books/2")
+        
+        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(book) { (iceAndFireObject : IceAndFireBook?, errorMessage : String?) -> Void in
+            
+            book = iceAndFireObject
+            
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            XCTAssertNotNil(book)
+            XCTAssertNotNil(book?.name)
+        }
+    }
+    
+    func testPopulatingCharacter()
+    {
+        let testExpectation = expectationWithDescription("testPopulatingCharacter")
+        
+        var character = IceAndFireCharacter(urlString: "http://anapioficeandfire.com/api/characters/2")
+        
+        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(character) { (iceAndFireObject : IceAndFireCharacter?, errorMessage : String?) -> Void in
+            
+            character = iceAndFireObject
+            
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            XCTAssertNotNil(character)
+            XCTAssertNotNil(character?.name)
+        }
+    }
+    
+    func testPopulatingHouse()
+    {
+        let testExpectation = expectationWithDescription("testPopulatingHouse")
+
+        var house = IceAndFireHouse(urlString: "http://anapioficeandfire.com/api/houses/2")
+        
+        IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(house) { (iceAndFireObject : IceAndFireHouse?, errorMessage : String?) -> Void in
+            
+            house = iceAndFireObject
+            
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            XCTAssertNotNil(house)
+            XCTAssertNotNil(house?.name)
+        }
     }
     
 }
