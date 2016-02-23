@@ -17,7 +17,7 @@ class FetchingArraysTests: XCTestCase {
         
         var charactersArray : [IceAndFireCharacter]?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(1, limit: 10) { (iceAndFireObjects : [IceAndFireCharacter]?, errorMessage : String?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireCharacter]?, errorMessage : String?) -> Void in
             
             charactersArray = iceAndFireObjects
             
@@ -36,7 +36,7 @@ class FetchingArraysTests: XCTestCase {
         
         var booksArray : [IceAndFireBook]?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(1, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, errorMessage : String?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, errorMessage : String?) -> Void in
             
             booksArray = iceAndFireObjects
             
@@ -55,7 +55,7 @@ class FetchingArraysTests: XCTestCase {
         
         var housesArray : [IceAndFireHouse]?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(1, limit: 10) { (iceAndFireObjects : [IceAndFireHouse]?, errorMessage : String?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireHouse]?, errorMessage : String?) -> Void in
             
             housesArray = iceAndFireObjects
             

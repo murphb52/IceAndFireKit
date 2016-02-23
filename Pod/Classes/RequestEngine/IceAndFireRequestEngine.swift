@@ -12,7 +12,11 @@ public class IceAndFireRequestEngine
 {
     public static let sharedInstance = IceAndFireRequestEngine()
     
-    let apiURLString = "http://www.anapioficeandfire.com/api/"
+    let APIURLString = "http://www.anapioficeandfire.com/api/"
+    
+    let APIVersion = 1
+    
+    let ETAG = "iOS_IceAndFireRequestEngine"
     
     //** Fetch Object with id
     
@@ -24,7 +28,7 @@ public class IceAndFireRequestEngine
     
     public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int, limit : Int, completionHandler: (iceAndFireObjects : [T]?, errorMessage: String?) -> Void)
     {
-        let endpointString = "\(apiURLString)\(T.APIType)?page=\(page)&limit=\(limit)"
+        let endpointString = "\(APIURLString)\(T.APIType)?page=\(page)&limit=\(limit)"
         
         let url = NSURL(string: endpointString)
         
@@ -45,7 +49,7 @@ public class IceAndFireRequestEngine
     public func getIceAndFireObject<T:IceAndFireObject>(id: Int, completionHandler: (iceAndFireObject: T?, errorMessage: String?) -> Void)
     {
         //** Create our urlString
-        let endpointString = "\(apiURLString)\(T.APIType)/\(id)"
+        let endpointString = "\(APIURLString)\(T.APIType)/\(id)"
         
         //** Create thr URL
         let url = NSURL(string: endpointString)
@@ -88,7 +92,12 @@ public class IceAndFireRequestEngine
     
     private func performRequestWithURL<T>(url : NSURL!, completionHandler: (T?, String?) -> Void)
     {
-        NSURLSession.sharedSession().dataTaskWithURL(url) { (data: NSData?, urlResponse : NSURLResponse?, error : NSError?) -> Void in
+        let request = NSMutableURLRequest(URL: url)
+        request.HTTPMethod = "GET"
+        request.addValue("application/vnd.anapioficeandfire+json; version=\(APIVersion)", forHTTPHeaderField: "Accept")
+        request.setValue(ETAG, forHTTPHeaderField: "If-None-Match")
+
+        NSURLSession.sharedSession().dataTaskWithRequest(request) { (data: NSData?, urlResponse : NSURLResponse?, error : NSError?) -> Void in
             
             //** Gaurd against error
             guard error == nil else
