@@ -82,6 +82,7 @@ class Tests: XCTestCase
         let testExpectation = expectationWithDescription("testPopulatingBook")
         
         var book = IceAndFireBook(urlString: "http://anapioficeandfire.com/api/books/2")
+        XCTAssertFalse(book!.isDetailed)
         
         IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(book) { (iceAndFireObject : IceAndFireBook?, errorMessage : String?) -> Void in
             
@@ -94,6 +95,7 @@ class Tests: XCTestCase
             
             XCTAssertNotNil(book)
             XCTAssertNotNil(book?.name)
+            XCTAssertTrue(book!.isDetailed)
         }
     }
     
@@ -102,6 +104,7 @@ class Tests: XCTestCase
         let testExpectation = expectationWithDescription("testPopulatingCharacter")
         
         var character = IceAndFireCharacter(urlString: "http://anapioficeandfire.com/api/characters/2")
+        XCTAssertFalse(character!.isDetailed)
         
         IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(character) { (iceAndFireObject : IceAndFireCharacter?, errorMessage : String?) -> Void in
             
@@ -114,6 +117,7 @@ class Tests: XCTestCase
             
             XCTAssertNotNil(character)
             XCTAssertNotNil(character?.name)
+            XCTAssertTrue(character!.isDetailed)
         }
     }
     
@@ -122,6 +126,7 @@ class Tests: XCTestCase
         let testExpectation = expectationWithDescription("testPopulatingHouse")
 
         var house = IceAndFireHouse(urlString: "http://anapioficeandfire.com/api/houses/2")
+        XCTAssertFalse(house!.isDetailed)
         
         IceAndFireRequestEngine.sharedInstance.populateIceAndFireObject(house) { (iceAndFireObject : IceAndFireHouse?, errorMessage : String?) -> Void in
             
@@ -134,6 +139,7 @@ class Tests: XCTestCase
             
             XCTAssertNotNil(house)
             XCTAssertNotNil(house?.name)
+            XCTAssertTrue(house!.isDetailed)
         }
     }
     

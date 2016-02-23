@@ -23,4 +23,7 @@ public protocol IceAndFireObject
     
     /// The name of object from the API.
     var name : String? { get set }
+    
+    /// Indicates if the object has been fully fetched from the API or is just a url
+    var isDetailed : Bool { get }
 }

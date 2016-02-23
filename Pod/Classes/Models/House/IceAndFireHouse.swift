@@ -16,6 +16,7 @@ public class IceAndFireHouse : IceAndFireObject
     {
         guard dictionary != nil else
         {
+            self.isDetailed = false
             return nil
         }
         
@@ -41,17 +42,25 @@ public class IceAndFireHouse : IceAndFireObject
         self.cadetBranchesObjectsArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.cadetBranchesURLStringsArray)
         self.swornMembersURLStrings = IceAndFireObjectParser.arrayFromDictionary(dictionary!, key: "swornMembers")
         self.swornMembersObjectsArray = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.swornMembersURLStrings)
+        
+        self.isDetailed = true
     }
     
     public required init?(urlString: String?)
     {
         guard urlString != nil else
         {
+            self.isDetailed = false
             return nil
         }
         
         self.urlString = urlString
+        
+        self.isDetailed = false
     }
+    
+    /// Indicates if the object has been fully fetched from the API or is just a url
+    public var isDetailed : Bool
     
     /// The hypermedia URL of this resource
     public var urlString : String?

@@ -16,6 +16,7 @@ public class IceAndFireBook : IceAndFireObject
     {
         guard dictionary != nil else
         {
+            self.isDetailed = false
             return nil
         }
         
@@ -33,19 +34,27 @@ public class IceAndFireBook : IceAndFireObject
         //** Populating character objects
         self.characterObjects = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.characterURLStrings)
         self.povCharacterObjects = IceAndFireObjectParser.arrayOfIceAndFireObjectsFromArrayOfUrls(self.povCharacterURLStrings)
+        
+        self.isDetailed = true
     }
     
     public required init?(urlString: String?)
     {
         guard urlString != nil else
         {
+            self.isDetailed = false
             return nil
         }
         
         self.urlString = urlString
+        
+        self.isDetailed = false
     }
     
     //MARK: Properties from API
+    
+    /// Indicates if the object has been fully fetched from the API or is just a url
+    public var isDetailed : Bool
     
     /// The hypermedia URL of this resource
     public var urlString : String?
