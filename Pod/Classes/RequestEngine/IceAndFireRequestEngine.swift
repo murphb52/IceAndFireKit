@@ -35,7 +35,7 @@ public class IceAndFireRequestEngine
             {
                 endpointString += "page=\(page)"
             }
-            else if page != nil
+            else if limit != nil
             {
                 endpointString += "limit=\(limit)"
             }
