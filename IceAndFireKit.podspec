@@ -8,14 +8,10 @@
 
 Pod::Spec.new do |s|
   s.name             = "IceAndFireKit"
-  s.version          = "0.1.0"
+  s.version          = "1.0.0"
   s.summary          = "Simple library for easy access to AnApiOfIceAndFire."
 
-# This description is used to generate tags and improve search results.
-#   * Think: What does it do? Why did you write it? What is the focus?
-#   * Try to keep it short, snappy and to the point.
-#   * Write the description between the DESC delimiters below.
-#   * Finally, don't worry about the indent, CocoaPods strips it!  
+
   s.description      = <<-DESC
 A Simple Swift implementation of interaction with the Api AnApiOfIceAndFire.
 RequestEngine and Models to get information from the API (https://anapioficeandfire.com) in an easily accesible way
@@ -31,10 +27,5 @@ RequestEngine and Models to get information from the API (https://anapioficeandf
   s.requires_arc = true
 
   s.source_files = 'Pod/Classes/**/*'
-  s.resource_bundles = {
-    'IceAndFireKit' => ['Pod/Assets/*.png']
-  }
 
-  # s.public_header_files = 'Pod/Classes/**/*.h'
-  # s.dependency 'AFNetworking', '~> 2.3'
 end
