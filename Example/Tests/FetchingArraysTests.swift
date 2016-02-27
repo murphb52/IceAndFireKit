@@ -67,5 +67,27 @@ class FetchingArraysTests: XCTestCase {
             XCTAssertNotNil(housesArray)
         }
     }
+    
+    func testFetchingHousesWithPages()
+    {
+        let testExpectation = expectationWithDescription("testFetchingHousesWithPages")
+        
+        var housesArray : [IceAndFireHouse]?
+        
+        let page : Int? = 2
+        let limit : Int? = 10
+        
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(page, limit: limit) { (iceAndFireObjects : [IceAndFireHouse]?, error : NSError?) -> Void in
+            
+            housesArray = iceAndFireObjects
+            
+            testExpectation.fulfill()
+        }
+        
+        waitForExpectationsWithTimeout(10) { (error) -> Void in
+            
+            XCTAssertNotNil(housesArray)
+        }
+    }
 
 }

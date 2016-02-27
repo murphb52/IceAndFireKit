@@ -21,7 +21,7 @@ public class IceAndFireRequestEngine
     /// Fetches a page of objects with an optional page and limit
     public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int?, limit : Int?, completionHandler: (iceAndFireObjects : [T]?, error: NSError?) -> Void)
     {
-        var endpointString = "\(APIURLString)\(T.APIType)?page=\(page)&limit=\(limit)"
+        var endpointString = "\(APIURLString)\(T.APIType)"
         
         if page != nil || limit != nil
         {
@@ -29,15 +29,15 @@ public class IceAndFireRequestEngine
             
             if page != nil && limit != nil
             {
-                endpointString += "page=\(page)&limit=\(limit)"
+                endpointString += "page=\(page!)&limit=\(limit!)"
             }
             else if page != nil
             {
-                endpointString += "page=\(page)"
+                endpointString += "page=\(page!)"
             }
             else if limit != nil
             {
-                endpointString += "limit=\(limit)"
+                endpointString += "limit=\(limit!)"
             }
         }
         
