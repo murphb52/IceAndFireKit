@@ -45,6 +45,12 @@ public class IceAndFireRequestEngine
         
         performRequestWithURL(url) { (dictionaryArray : NSArray?, error: NSError?) -> Void in
             
+            guard error == nil && dictionaryArray != nil else
+            {
+                completionHandler(iceAndFireObjects: nil, error: error)
+                return
+            }
+            
             //** Parse Dictionary into object
             var objectArray : [T] = []
             for dictionary in dictionaryArray!
@@ -68,6 +74,12 @@ public class IceAndFireRequestEngine
         
         
         performRequestWithURL(url) { (dictionary : NSDictionary?, error: NSError?) -> Void in
+         
+            guard error == nil && dictionary != nil else
+            {
+                completionHandler(iceAndFireObject: nil, error: error)
+                return
+            }
             
             //** Parse Dictionary into object
             let parsedIceAndFireObject = T(dictionary: dictionary)
@@ -87,6 +99,12 @@ public class IceAndFireRequestEngine
         let url = NSURL(string: endpointString!)
         
         performRequestWithURL(url) { (dictionary : NSDictionary?, error : NSError?) -> Void in
+            
+            guard error == nil && dictionary != nil else
+            {
+                completionHandler(iceAndFireObject: nil, error: error)
+                return
+            }
             
             //** Parse Dictionary into object
             let parsedIceAndFireObject = T(dictionary: dictionary)
