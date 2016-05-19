@@ -18,6 +18,7 @@
 		917D58F19BBB37907E78FE144D3DEC7E /* IceAndFireObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB0641EEE6C6B3EAD6FFBE2336552F24 /* IceAndFireObject.swift */; };
 		B3A42070749BAB70AB2581F828D4F5B3 /* Pods-IceAndFireKit_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0715DF664D006ADABFEF5ABF9EA2FBFD /* Pods-IceAndFireKit_Tests-dummy.m */; };
 		B6690435DBC7F344DB190B3CE9D27A15 /* IceAndFireKit-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 198D187B3DFEFC28F09CB579C5A19A2F /* IceAndFireKit-dummy.m */; };
+		C9A2B2B11CECF15D009493B8 /* IceAndFireLinkHeaders.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9A2B2B01CECF15D009493B8 /* IceAndFireLinkHeaders.swift */; };
 		C9E16F551C7D1EC4007380F2 /* IceAndFireError.swift in Sources */ = {isa = PBXBuildFile; fileRef = C9E16F541C7D1EC4007380F2 /* IceAndFireError.swift */; };
 		DED282B11BE62261FC57A4591E41332B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3E4E89230EF59BC255123B67864ACF77 /* Foundation.framework */; };
 		E538E68C72237E7C53421B60FB70DD18 /* IceAndFireObjectParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0792A99470F60AD8F40EECA238E881 /* IceAndFireObjectParser.swift */; };
@@ -60,6 +61,7 @@
 		BA6428E9F66FD5A23C0A2E06ED26CD2F /* Podfile */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		C73272B7B34954C51BB4F7436BF434C1 /* IceAndFireKit-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "IceAndFireKit-prefix.pch"; sourceTree = "<group>"; };
 		C8B5D6ECB621E7476C2F18387B2AF2D3 /* IceAndFireKit.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IceAndFireKit.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		C9A2B2B01CECF15D009493B8 /* IceAndFireLinkHeaders.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceAndFireLinkHeaders.swift; sourceTree = "<group>"; };
 		C9E16F541C7D1EC4007380F2 /* IceAndFireError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IceAndFireError.swift; sourceTree = "<group>"; };
 		D8D86D35D98AADA3105637675D2B6B77 /* IceAndFireBook.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = IceAndFireBook.swift; sourceTree = "<group>"; };
 		D9351DC5DAC3971330F033B83D78FE6A /* IceAndFireKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = IceAndFireKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -146,6 +148,7 @@
 		9081DB62B0E4631B03398DC29F90A4E2 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				C9A2B2B01CECF15D009493B8 /* IceAndFireLinkHeaders.swift */,
 				FB0641EEE6C6B3EAD6FFBE2336552F24 /* IceAndFireObject.swift */,
 				3A0792A99470F60AD8F40EECA238E881 /* IceAndFireObjectParser.swift */,
 				C9E16F541C7D1EC4007380F2 /* IceAndFireError.swift */,
@@ -338,7 +341,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0730;
 			};
 			buildConfigurationList = 2D8E8EC45A3A1A1D94AE762CB5028504 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -383,6 +386,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13260B79895FFAE4B242F2EE34BB64AD /* IceAndFireBook.swift in Sources */,
+				C9A2B2B11CECF15D009493B8 /* IceAndFireLinkHeaders.swift in Sources */,
 				13606B7C1F1F66602BAF835AAEE8A45E /* IceAndFireCharacter.swift in Sources */,
 				106DF8A82678B05683652750195A072F /* IceAndFireHouse.swift in Sources */,
 				B6690435DBC7F344DB190B3CE9D27A15 /* IceAndFireKit-dummy.m in Sources */,
@@ -471,6 +475,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_IceAndFireKit_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -498,6 +503,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/IceAndFireKit/IceAndFireKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IceAndFireKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -526,6 +532,7 @@
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -565,6 +572,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/IceAndFireKit/IceAndFireKit.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = IceAndFireKit;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
@@ -595,6 +603,7 @@
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = Pods_IceAndFireKit_Tests;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;

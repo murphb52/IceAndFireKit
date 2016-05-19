@@ -50,6 +50,12 @@ book = iceAndFireObject
 }
 ```
 
+## Pagination Links
+
+Fetching pages will return an `IceAndFireLinkHeaders` object. This can contain 4 pagination NSURLs. `prev`, `next`, `first` and `last`. They will be a reference to the appropriate page based on the keyword.
+
+These can be used for simple pagination chaining
+
 ## Requirements
 
 ## Installation
