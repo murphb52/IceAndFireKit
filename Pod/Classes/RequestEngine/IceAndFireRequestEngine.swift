@@ -19,7 +19,7 @@ public class IceAndFireRequestEngine
     let ETAG = "iOS_IceAndFireRequestEngine"
     
     /// Fetches a page of objects with an optional page and limit
-    public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int?, limit : Int?, completionHandler: (iceAndFireObjects : [T]?, error: NSError?) -> Void)
+    public func fetchIceAndFireObjectsWithPage<T:IceAndFireObject>(page : Int?, limit : Int?, completionHandler: (iceAndFireObjects : [T]?, error: NSError?, linkHeaders : IceAndFireLinkHeaders?) -> Void)
     {
         var endpointString = "\(APIURLString)\(T.APIType)"
         
@@ -43,11 +43,11 @@ public class IceAndFireRequestEngine
         
         let url = NSURL(string: endpointString)
         
-        performRequestWithURL(url) { (dictionaryArray : NSArray?, error: NSError?) -> Void in
+        performRequestWithURL(url) { (dictionaryArray : NSArray?, error: NSError?, linkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             guard error == nil && dictionaryArray != nil else
             {
-                completionHandler(iceAndFireObjects: nil, error: error)
+                completionHandler(iceAndFireObjects: nil, error: error, linkHeaders: nil)
                 return
             }
             
@@ -59,7 +59,7 @@ public class IceAndFireRequestEngine
                 objectArray.append(parsedIceAndFireObject!)
             }
             
-            completionHandler(iceAndFireObjects: objectArray, error : error)
+            completionHandler(iceAndFireObjects: objectArray, error : error, linkHeaders: linkHeaders)
         }
     }
     
@@ -73,7 +73,7 @@ public class IceAndFireRequestEngine
         let url = NSURL(string: endpointString)
         
         
-        performRequestWithURL(url) { (dictionary : NSDictionary?, error: NSError?) -> Void in
+        performRequestWithURL(url) { (dictionary : NSDictionary?, error: NSError?, linkHeaders : IceAndFireLinkHeaders?) -> Void in
          
             guard error == nil && dictionary != nil else
             {
@@ -98,7 +98,7 @@ public class IceAndFireRequestEngine
         //** Create thr URL
         let url = NSURL(string: endpointString!)
         
-        performRequestWithURL(url) { (dictionary : NSDictionary?, error : NSError?) -> Void in
+        performRequestWithURL(url) { (dictionary : NSDictionary?, error : NSError?, linkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             guard error == nil && dictionary != nil else
             {
@@ -115,7 +115,7 @@ public class IceAndFireRequestEngine
         
     }
     
-    private func performRequestWithURL<T>(url : NSURL!, completionHandler: (T?, NSError?) -> Void)
+    private func performRequestWithURL<T>(url : NSURL!, completionHandler: (T?, NSError?, IceAndFireLinkHeaders?) -> Void)
     {
         let request = NSMutableURLRequest(URL: url)
         request.HTTPMethod = "GET"
@@ -127,14 +127,14 @@ public class IceAndFireRequestEngine
             //** Gaurd against error
             guard error == nil else
             {
-                completionHandler(nil, error)
+                completionHandler(nil, error, nil)
                 return
             }
             
             //** Make sure we have a HTTPURLResponse
             guard urlResponse is NSHTTPURLResponse else
             {
-                completionHandler(nil, NSError(type: .HTTPError))
+                completionHandler(nil, NSError(type: .HTTPError), nil)
                 return
             }
             
@@ -143,15 +143,18 @@ public class IceAndFireRequestEngine
             //** Make sure we got a 200
             guard httpURLResponse.statusCode == 200 else
             {
-                completionHandler(nil, NSError(type: .HTTPError, forcedLocalizedDescription: NSHTTPURLResponse.localizedStringForStatusCode(httpURLResponse.statusCode)))
+                completionHandler(nil, NSError(type: .HTTPError, forcedLocalizedDescription: NSHTTPURLResponse.localizedStringForStatusCode(httpURLResponse.statusCode)), nil)
                 return
             }
             
             guard data != nil else
             {
-                completionHandler(nil, NSError(type: .APIError))
+                completionHandler(nil, NSError(type: .APIError), nil)
                 return
             }
+            
+            //** Parsing the link headers
+            let linkHeaders = IceAndFireLinkHeaders(httpURLResponse: httpURLResponse)
             
             //** Try parse into JSONObject
             do
@@ -161,19 +164,21 @@ public class IceAndFireRequestEngine
                 //** Make sure it can be parsed into dictionary
                 guard jsonResponse is T else
                 {
-                    completionHandler(nil, NSError(type: .JSONError))
+                    completionHandler(nil, NSError(type: .JSONError), nil)
                     return
                 }
                 
                 //** Fire off completion handler
-                completionHandler(jsonResponse as? T, nil)
+                completionHandler(jsonResponse as? T, nil, linkHeaders)
             }
             catch
             {
-                completionHandler(nil, NSError(type: .JSONError))
+                completionHandler(nil, NSError(type: .JSONError), nil)
             }
             
         }.resume()
 
     }
+    
+    
 }
