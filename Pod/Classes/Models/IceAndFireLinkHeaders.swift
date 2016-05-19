@@ -10,7 +10,12 @@ import Foundation
 
 public class IceAndFireLinkHeaders
 {
-    private var urlDictionary : [String : NSURL]?
+    private var urlDictionary : [String : NSURL]!
+    
+    public var next : NSURL?
+    public var prev : NSURL?
+    public var last : NSURL?
+    public var first : NSURL?
     
     public required init?(httpURLResponse: NSHTTPURLResponse?)
     {
@@ -27,11 +32,16 @@ public class IceAndFireLinkHeaders
         }
 
         self.urlDictionary = parseLinkHeadersString((responseHeaders["Link"] as! String))
+        
+        self.next = self.urlDictionary["next"]
+        self.prev = self.urlDictionary["prev"]
+        self.first = self.urlDictionary["first"]
+        self.last = self.urlDictionary["last"]
     }
     
     private func parseLinkHeadersString(string: String) -> [String : NSURL]?
     {
-        var mutableDictionary : [String : NSURL]? = [:]
+        var mutableDictionary : [String : NSURL] = [:]
         
         let commaSeperatedValues = string.componentsSeparatedByString(",")
         
@@ -69,7 +79,7 @@ public class IceAndFireLinkHeaders
                     
                     let relationString = captures[1]
                     
-                    mutableDictionary![relationString] = url
+                    mutableDictionary[relationString] = url
                 }
 
                 

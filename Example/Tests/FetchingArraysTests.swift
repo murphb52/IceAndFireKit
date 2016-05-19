@@ -30,6 +30,10 @@ class FetchingArraysTests: XCTestCase {
             
             XCTAssertNotNil(charactersArray)
             XCTAssertNotNil(linkHeaders)
+            XCTAssertNotNil(linkHeaders?.first)
+            XCTAssertNotNil(linkHeaders?.last)
+            XCTAssertNotNil(linkHeaders?.next)
+            XCTAssertNotNil(linkHeaders?.prev)
         }
     }
     
@@ -40,7 +44,7 @@ class FetchingArraysTests: XCTestCase {
         var booksArray : [IceAndFireBook]?
         var linkHeaders : IceAndFireLinkHeaders?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(1, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             booksArray = iceAndFireObjects
             linkHeaders = returnedLinkHeaders
@@ -52,6 +56,11 @@ class FetchingArraysTests: XCTestCase {
             
             XCTAssertNotNil(booksArray)
             XCTAssertNotNil(linkHeaders)
+            XCTAssertNotNil(linkHeaders?.first)
+            XCTAssertNotNil(linkHeaders?.last)
+            XCTAssertNotNil(linkHeaders?.next)
+            
+            XCTAssertNil(linkHeaders?.prev) // There is no previous with the first page
         }
     }
     
@@ -74,6 +83,10 @@ class FetchingArraysTests: XCTestCase {
             
             XCTAssertNotNil(housesArray)
             XCTAssertNotNil(linkHeaders)
+            XCTAssertNotNil(linkHeaders?.first)
+            XCTAssertNotNil(linkHeaders?.last)
+            XCTAssertNotNil(linkHeaders?.next)
+            XCTAssertNotNil(linkHeaders?.prev)
         }
     }
     
@@ -99,6 +112,10 @@ class FetchingArraysTests: XCTestCase {
             
             XCTAssertNotNil(housesArray)
             XCTAssertNotNil(linkHeaders)
+            XCTAssertNotNil(linkHeaders?.first)
+            XCTAssertNotNil(linkHeaders?.last)
+            XCTAssertNotNil(linkHeaders?.next)
+            XCTAssertNotNil(linkHeaders?.prev)
         }
     }
 
