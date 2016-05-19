@@ -16,10 +16,12 @@ class FetchingArraysTests: XCTestCase {
         let testExpectation = expectationWithDescription("testFetchingCharactersArray")
         
         var charactersArray : [IceAndFireCharacter]?
+        var linkHeaders : IceAndFireLinkHeaders?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireCharacter]?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireCharacter]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             charactersArray = iceAndFireObjects
+            linkHeaders = returnedLinkHeaders
             
             testExpectation.fulfill()
         }
@@ -27,6 +29,7 @@ class FetchingArraysTests: XCTestCase {
         waitForExpectationsWithTimeout(10) { (error) -> Void in
             
             XCTAssertNotNil(charactersArray)
+            XCTAssertNotNil(linkHeaders)
         }
     }
     
@@ -35,10 +38,12 @@ class FetchingArraysTests: XCTestCase {
         let testExpectation = expectationWithDescription("testFetchingBooksArray")
         
         var booksArray : [IceAndFireBook]?
+        var linkHeaders : IceAndFireLinkHeaders?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireBook]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             booksArray = iceAndFireObjects
+            linkHeaders = returnedLinkHeaders
             
             testExpectation.fulfill()
         }
@@ -46,6 +51,7 @@ class FetchingArraysTests: XCTestCase {
         waitForExpectationsWithTimeout(10) { (error) -> Void in
             
             XCTAssertNotNil(booksArray)
+            XCTAssertNotNil(linkHeaders)
         }
     }
     
@@ -54,10 +60,12 @@ class FetchingArraysTests: XCTestCase {
         let testExpectation = expectationWithDescription("testFetchingHousesArray")
         
         var housesArray : [IceAndFireHouse]?
+        var linkHeaders : IceAndFireLinkHeaders?
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireHouse]?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(2, limit: 10) { (iceAndFireObjects : [IceAndFireHouse]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             housesArray = iceAndFireObjects
+            linkHeaders = returnedLinkHeaders
             
             testExpectation.fulfill()
         }
@@ -65,6 +73,7 @@ class FetchingArraysTests: XCTestCase {
         waitForExpectationsWithTimeout(10) { (error) -> Void in
             
             XCTAssertNotNil(housesArray)
+            XCTAssertNotNil(linkHeaders)
         }
     }
     
@@ -73,13 +82,15 @@ class FetchingArraysTests: XCTestCase {
         let testExpectation = expectationWithDescription("testFetchingHousesWithPages")
         
         var housesArray : [IceAndFireHouse]?
+        var linkHeaders : IceAndFireLinkHeaders?
         
         let page : Int? = 2
         let limit : Int? = 10
         
-        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(page, limit: limit) { (iceAndFireObjects : [IceAndFireHouse]?, error : NSError?) -> Void in
+        IceAndFireRequestEngine.sharedInstance.fetchIceAndFireObjectsWithPage(page, limit: limit) { (iceAndFireObjects : [IceAndFireHouse]?, error : NSError?, returnedLinkHeaders : IceAndFireLinkHeaders?) -> Void in
             
             housesArray = iceAndFireObjects
+            linkHeaders = returnedLinkHeaders
             
             testExpectation.fulfill()
         }
@@ -87,6 +98,7 @@ class FetchingArraysTests: XCTestCase {
         waitForExpectationsWithTimeout(10) { (error) -> Void in
             
             XCTAssertNotNil(housesArray)
+            XCTAssertNotNil(linkHeaders)
         }
     }
 
