@@ -8,9 +8,9 @@
 
 import Foundation
 
-public class IceAndFireBook : IceAndFireObject
+open class IceAndFireBook : IceAndFireObject
 {
-    public static let APIType = "books"
+    open static let APIType = "books"
     
     public required init?(dictionary: NSDictionary?)
     {
@@ -54,46 +54,46 @@ public class IceAndFireBook : IceAndFireObject
     //MARK: Properties from API
     
     /// Indicates if the object has been fully fetched from the API or is just a url
-    public var isDetailed : Bool
+    open var isDetailed : Bool
     
     /// The hypermedia URL of this resource
-    public var urlString : String?
+    open var urlString : String?
     
     /// The name of this Book.
-    public var name : String?
+    open var name : String?
     
     /// The International Standard Book Number that uniquely identifies this book. The format used is ISBN-13.
-    public var isbn : String?
+    open var isbn : String?
     
     /// An array of names of the authors that wrote this book.
-    public var authors : [String]?
+    open var authors : [String]?
     
     /// The number of pages in this book.
-    public var numberOfPages : Int?
+    open var numberOfPages : Int?
     
     /// The company that published this book.
-    public var publisher : String?
+    open var publisher : String?
     
     /// The country which this book was published in.
-    public var country : String?
+    open var country : String?
     
     /// The type of media this book was released in. Possible values are: Hardback, Hardcover, GraphicNovel and Paperback.
-    public var mediaType : String?
+    open var mediaType : String?
     
     /// The date, in ISO 8601 format, which this book was released
-    public var released : NSDate?
+    open var released : Date?
     
     /// array of string	An array of Character resource URLs that has been in this book.
-    public var characterURLStrings : [String]?
+    open var characterURLStrings : [String]?
     
     /// array of string	An array of Character resource URLs that has had a POV-chapter in this book.
-    public var povCharacterURLStrings : [String]?
+    open var povCharacterURLStrings : [String]?
     
     //MARK: IceAndFireKit variables. Infered from urls from the API. All objects need to be loaded from the API Seperatly
     
     /// An array of character objects. This is created from the `characterURLStrings`. Base objects that need to be loaded for their information
-    public var characterObjects : [IceAndFireCharacter]?
+    open var characterObjects : [IceAndFireCharacter]?
     
     /// An array of character objects. This is created from the `characterURLStrings`. Base objects that need to be loaded for their information
-    public var povCharacterObjects : [IceAndFireCharacter]?
+    open var povCharacterObjects : [IceAndFireCharacter]?
 }

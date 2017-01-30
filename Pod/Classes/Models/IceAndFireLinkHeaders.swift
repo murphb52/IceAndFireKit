@@ -7,17 +7,30 @@
 //
 
 import Foundation
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
-public class IceAndFireLinkHeaders
+
+open class IceAndFireLinkHeaders
 {
-    private var urlDictionary : [String : NSURL]!
+    fileprivate var urlDictionary : [String : URL]!
     
-    public var next : NSURL?
-    public var prev : NSURL?
-    public var last : NSURL?
-    public var first : NSURL?
+    open var next : URL?
+    open var prev : URL?
+    open var last : URL?
+    open var first : URL?
     
-    public required init?(httpURLResponse: NSHTTPURLResponse?)
+    public required init?(httpURLResponse: HTTPURLResponse?)
     {
         guard httpURLResponse != nil else
         {
@@ -39,11 +52,11 @@ public class IceAndFireLinkHeaders
         self.last = self.urlDictionary["last"]
     }
     
-    private func parseLinkHeadersString(string: String) -> [String : NSURL]?
+    fileprivate func parseLinkHeadersString(_ string: String) -> [String : URL]?
     {
-        var mutableDictionary : [String : NSURL] = [:]
+        var mutableDictionary : [String : URL] = [:]
         
-        let commaSeperatedValues = string.componentsSeparatedByString(",")
+        let commaSeperatedValues = string.components(separatedBy: ",")
         
         for individualStringFor in commaSeperatedValues {
             
@@ -51,9 +64,9 @@ public class IceAndFireLinkHeaders
             
             do
             {
-                let regex = try NSRegularExpression(pattern: regexPattern, options: .CaseInsensitive)
+                let regex = try NSRegularExpression(pattern: regexPattern, options: .caseInsensitive)
                 
-                let result = regex.firstMatchInString(individualStringFor, options: .Anchored, range: NSMakeRange(0, individualStringFor.characters.count))
+                let result = regex.firstMatch(in: individualStringFor, options: .anchored, range: NSMakeRange(0, individualStringFor.characters.count))
                 
                 if result != nil
                 {
@@ -62,8 +75,8 @@ public class IceAndFireLinkHeaders
                     var i = 1
                     while i < result?.numberOfRanges
                     {
-                        let range = result?.rangeAtIndex(i)
-                        let capture = (individualStringFor as NSString).substringWithRange(range!)
+                        let range = result?.rangeAt(i)
+                        let capture = (individualStringFor as NSString).substring(with: range!)
                         captures.append(capture)
                         
                         i = i + 1
@@ -75,7 +88,7 @@ public class IceAndFireLinkHeaders
                     }
                     
                     let urlString = captures[0] as String
-                    let url = NSURL(string: urlString)
+                    let url = URL(string: urlString)
                     
                     let relationString = captures[1]
                     

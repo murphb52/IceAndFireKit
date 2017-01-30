@@ -13,7 +13,7 @@ class FetchingObjectsTests: XCTestCase {
 
     func testFetchingBook()
     {
-        let testExpectation = expectationWithDescription("TextExample")
+        let testExpectation = expectation(description: "TextExample")
         
         var bookObject : IceAndFireBook?
         
@@ -24,7 +24,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(bookObject)
             
@@ -34,7 +34,7 @@ class FetchingObjectsTests: XCTestCase {
     
     func testFetchingCharacter()
     {
-        let testExpectation = expectationWithDescription("testFetchingCharacter")
+        let testExpectation = expectation(description: "testFetchingCharacter")
         
         var charObject : IceAndFireCharacter?
         
@@ -45,7 +45,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(charObject)
             
@@ -54,7 +54,7 @@ class FetchingObjectsTests: XCTestCase {
     
     func testFetchingHouse()
     {
-        let testExpectation = expectationWithDescription("testFetchingHouse")
+        let testExpectation = expectation(description: "testFetchingHouse")
         
         var houseObject : IceAndFireHouse?
         
@@ -65,7 +65,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(houseObject)
             
@@ -75,7 +75,7 @@ class FetchingObjectsTests: XCTestCase {
     
     func testPopulatingBook()
     {
-        let testExpectation = expectationWithDescription("testPopulatingBook")
+        let testExpectation = expectation(description: "testPopulatingBook")
         
         var book = IceAndFireBook(urlString: "http://anapioficeandfire.com/api/books/2")
         XCTAssertFalse(book!.isDetailed)
@@ -87,7 +87,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(book)
             XCTAssertNotNil(book?.name)
@@ -97,7 +97,7 @@ class FetchingObjectsTests: XCTestCase {
     
     func testPopulatingCharacter()
     {
-        let testExpectation = expectationWithDescription("testPopulatingCharacter")
+        let testExpectation = expectation(description: "testPopulatingCharacter")
         
         var character = IceAndFireCharacter(urlString: "http://anapioficeandfire.com/api/characters/2")
         XCTAssertFalse(character!.isDetailed)
@@ -109,7 +109,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(character)
             XCTAssertNotNil(character?.name)
@@ -119,7 +119,7 @@ class FetchingObjectsTests: XCTestCase {
     
     func testPopulatingHouse()
     {
-        let testExpectation = expectationWithDescription("testPopulatingHouse")
+        let testExpectation = expectation(description: "testPopulatingHouse")
         
         var house = IceAndFireHouse(urlString: "http://anapioficeandfire.com/api/houses/2")
         XCTAssertFalse(house!.isDetailed)
@@ -131,7 +131,7 @@ class FetchingObjectsTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(house)
             XCTAssertNotNil(house?.name)

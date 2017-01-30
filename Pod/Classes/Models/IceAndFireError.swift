@@ -12,12 +12,12 @@ public let ProjectErrorDomain = "IceAndFireKitError"
 
 public enum IceAndFireErrorType: Int {
     
-    case Unknown =      1
-    case HTTPError =    2
-    case APIError =     3
-    case JSONError =    4
+    case unknown =      1
+    case httpError =    2
+    case apiError =     3
+    case jsonError =    4
     
-    func localizedUserInfo(forcedLocalizedDescription : String?) -> [String: String]
+    func localizedUserInfo(_ forcedLocalizedDescription : String?) -> [String: String]
     {
         var localizedDescription: String = ""
         var localizedFailureReasonError: String = ""
@@ -25,19 +25,19 @@ public enum IceAndFireErrorType: Int {
         
         switch self
         {
-        case Unknown:
+        case .unknown:
             localizedFailureReasonError = "Unknown reason"
             localizedDescription = "Unknown reason"
             localizedRecoverySuggestionError = "Please investigate and try again"
-        case HTTPError:
+        case .httpError:
             localizedFailureReasonError = "Received response code other than 200"
             localizedDescription = "Bad response received"
             localizedRecoverySuggestionError = "Please investigate URL Response"
-        case .APIError:
+        case .apiError:
             localizedFailureReasonError = "Received error from the API"
             localizedDescription = "Please check request and try again"
             localizedRecoverySuggestionError = "Please investigate URL Request"
-        case .JSONError:
+        case .jsonError:
             localizedFailureReasonError = "Error parsing JSON Into specified response type"
             localizedDescription = "Bad response received"
             localizedRecoverySuggestionError = "Check JSON Response type"

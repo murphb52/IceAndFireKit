@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "IceAndFireKit"
-  s.version          = "1.1.0"
+  s.version          = "1.1"
   s.summary          = "Simple library for easy access to AnApiOfIceAndFire."
 
 
