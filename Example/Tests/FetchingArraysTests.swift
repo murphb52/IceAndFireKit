@@ -13,7 +13,7 @@ class FetchingArraysTests: XCTestCase {
 
     func testFetchingCharactersArray()
     {
-        let testExpectation = expectationWithDescription("testFetchingCharactersArray")
+        let testExpectation = expectation(description: "testFetchingCharactersArray")
         
         var charactersArray : [IceAndFireCharacter]?
         var linkHeaders : IceAndFireLinkHeaders?
@@ -26,7 +26,7 @@ class FetchingArraysTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(charactersArray)
             XCTAssertNotNil(linkHeaders)
@@ -39,7 +39,7 @@ class FetchingArraysTests: XCTestCase {
     
     func testFetchingBooksArray()
     {
-        let testExpectation = expectationWithDescription("testFetchingBooksArray")
+        let testExpectation = expectation(description: "testFetchingBooksArray")
         
         var booksArray : [IceAndFireBook]?
         var linkHeaders : IceAndFireLinkHeaders?
@@ -52,7 +52,7 @@ class FetchingArraysTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(booksArray)
             XCTAssertNotNil(linkHeaders)
@@ -66,7 +66,7 @@ class FetchingArraysTests: XCTestCase {
     
     func testFetchingHousesArray()
     {
-        let testExpectation = expectationWithDescription("testFetchingHousesArray")
+        let testExpectation = expectation(description: "testFetchingHousesArray")
         
         var housesArray : [IceAndFireHouse]?
         var linkHeaders : IceAndFireLinkHeaders?
@@ -79,7 +79,7 @@ class FetchingArraysTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(housesArray)
             XCTAssertNotNil(linkHeaders)
@@ -92,7 +92,7 @@ class FetchingArraysTests: XCTestCase {
     
     func testFetchingHousesWithPages()
     {
-        let testExpectation = expectationWithDescription("testFetchingHousesWithPages")
+        let testExpectation = expectation(description: "testFetchingHousesWithPages")
         
         var housesArray : [IceAndFireHouse]?
         var linkHeaders : IceAndFireLinkHeaders?
@@ -108,7 +108,7 @@ class FetchingArraysTests: XCTestCase {
             testExpectation.fulfill()
         }
         
-        waitForExpectationsWithTimeout(10) { (error) -> Void in
+        waitForExpectations(timeout: 10) { (error) -> Void in
             
             XCTAssertNotNil(housesArray)
             XCTAssertNotNil(linkHeaders)
