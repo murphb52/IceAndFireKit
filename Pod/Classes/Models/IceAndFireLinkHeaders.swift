@@ -75,7 +75,7 @@ open class IceAndFireLinkHeaders
                     var i = 1
                     while i < result?.numberOfRanges
                     {
-                        let range = result?.rangeAt(i)
+                        let range = result?.range(at: i)
                         let capture = (individualStringFor as NSString).substring(with: range!)
                         captures.append(capture)
                         
