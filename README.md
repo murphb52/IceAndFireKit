@@ -1,6 +1,6 @@
 # IceAndFireKit
 
-[![CI Status](http://img.shields.io/travis/Brian/IceAndFireKit.svg?style=flat)](https://travis-ci.org/Brian/IceAndFireKit)
+[![CI Status](http://img.shields.io/travis/Brian/IceAndFireKit.svg?style=flat)](https://travis-ci.org/murphb52/IceAndFireKit)
 [![Version](https://img.shields.io/cocoapods/v/IceAndFireKit.svg?style=flat)](http://cocoapods.org/pods/IceAndFireKit)
 [![License](https://img.shields.io/cocoapods/l/IceAndFireKit.svg?style=flat)](http://cocoapods.org/pods/IceAndFireKit)
 [![Platform](https://img.shields.io/cocoapods/p/IceAndFireKit.svg?style=flat)](http://cocoapods.org/pods/IceAndFireKit)
